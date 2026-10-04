@@ -34,6 +34,9 @@ export default function Create() {
                             value={data.nombre}
                             onChange={e => setData('nombre', e.target.value)}
                         ></Input>
+                        {errors.nombre && (
+                            <div className='flex items-center text-red-500 text-sm mt-1'>{errors.nombre}</div>
+                        )}
                     </div>
                     <div className='gap-1.5'>
                         <Input
@@ -41,6 +44,9 @@ export default function Create() {
                             value={data.stock}
                             onChange={e => setData('stock', e.target.value)}
                         ></Input>
+                        {errors.stock && (
+                            <div className='flex items-center text-red-500 text-sm mt-1'>{errors.stock}</div>
+                        )}
                     </div>
                     <div className='gap-1.5'>
                         <Input
@@ -48,6 +54,9 @@ export default function Create() {
                             value={data.precio}
                             onChange={e => setData('precio', e.target.value)}
                         ></Input>
+                        {errors.precio && (
+                            <div className='flex items-center text-red-500 text-sm mt-1'>{errors.precio}</div>
+                        )}
                     </div>
                     <div className='gap-1.5'>
                         <Textarea
@@ -55,6 +64,9 @@ export default function Create() {
                             value={data.descripcion}
                             onChange={e => setData('descripcion', e.target.value)}
                         />
+                        {errors.descripcion && (
+                            <div className='flex items-center text-red-500 text-sm mt-1'>{errors.descripcion}</div>
+                        )}
                     </div>
                     <div>
                         <Button
