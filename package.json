@@ -1,5 +1,6 @@
 {
     "$schema": "https://www.schemastore.org/package.json",
+    "packageManager": "npm@11.19.0",
     "private": true,
     "type": "module",
     "scripts": {
