@@ -90,7 +90,7 @@ export default function Edit({ product }: { product: Product }) {
     );
 }
 
-Edit.layout = {
+Edit.layout = ({ product }: { product: Product }) => ({
     breadcrumbs: [
         {
             title: 'Dashboard',
@@ -101,7 +101,8 @@ Edit.layout = {
             href: index(),
         },
         {
-            title: 'Crear Producto'
-        }
+            title: 'Editar: ' + product.nombre,
+        },
     ],
-};
+});
+

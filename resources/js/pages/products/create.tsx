@@ -70,6 +70,7 @@ export default function Create() {
                     </div>
                     <div>
                         <Button
+                            disabled={processing}
                             type='submit'
                         >
                             Crear Producto
