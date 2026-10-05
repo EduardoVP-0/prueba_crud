@@ -1,6 +1,6 @@
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 import { dashboard } from '@/routes';
-import { create, edit } from '@/routes/products';
+import { create, edit, destroy as destroyRoute } from '@/routes/products';
 import { Button } from '@/components/ui/button';
 import {
     Table,
@@ -22,6 +22,16 @@ interface Product {
 
 
 export default function Index({ products }: { products: Product[] }) {
+
+    const { processing, delete: destroy } = useForm();
+
+    const handleDelete = (id: number) => {
+        if (confirm('¿Estas seguro de querer borrar este producto?')) {
+
+            destroy(destroyRoute.url(id));
+        }
+    }
+
     return (
         <>
             <Head title="Productos | Lista" />
@@ -55,12 +65,19 @@ export default function Index({ products }: { products: Product[] }) {
                                 <TableCell>{product.descripcion}</TableCell>
                                 <TableCell>{product.stock}</TableCell>
                                 <TableCell>{product.precio}</TableCell>
-                                <TableCell className="text-right">
+                                <TableCell className="text-right space-x-2">
                                     <Link href={edit(product.id)}>
                                     <Button className='bg-slate-500 hover:bg-slate-700'>
                                         Editar
                                     </Button>
                                     </Link>
+                                    <Button
+                                        className='bg-red-500 hover:bg-red-700'
+                                        onClick={() => handleDelete(product.id)}
+                                        disabled={processing}
+                                    >
+                                        Eliminar
+                                    </Button>
                                 </TableCell>
                             </TableRow>
                         ))}
