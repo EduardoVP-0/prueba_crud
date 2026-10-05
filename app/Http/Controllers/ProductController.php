@@ -54,7 +54,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return inertia('products/edit', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -62,7 +64,11 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $validated = $request->validated();
+        
+        $product->update($validated);
+
+        return redirect()->route('products.index');
     }
 
     /**

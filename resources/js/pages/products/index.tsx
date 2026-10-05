@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import { dashboard } from '@/routes';
-import { create } from '@/routes/products';
+import { create, edit } from '@/routes/products';
 import { Button } from '@/components/ui/button';
 import {
     Table,
@@ -56,7 +56,11 @@ export default function Index({ products }: { products: Product[] }) {
                                 <TableCell>{product.stock}</TableCell>
                                 <TableCell>{product.precio}</TableCell>
                                 <TableCell className="text-right">
-
+                                    <Link href={edit(product.id)}>
+                                    <Button className='bg-slate-500 hover:bg-slate-700'>
+                                        Editar
+                                    </Button>
+                                    </Link>
                                 </TableCell>
                             </TableRow>
                         ))}
